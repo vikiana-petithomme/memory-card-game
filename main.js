@@ -1,17 +1,19 @@
 
 
 let cards = document.querySelectorAll('.card')
-let cardArray = Array.from(cards)
+let cardContainer = document.querySelectorAll('.cardLayout')
 
-console.log(cardArray)
-
-for (let i=0; i < cardArray.length; i++){
-    shuffle(cardArray)
-cards[i]= cardArray[i]
+console.log(cardContainer[0].children.length)
+for (i = cardContainer[0].children.length; i >= 0; i--) {
+    cardContainer[0].appendChild(cardContainer[0].children[Math.random() * i | 0]);
 }
 
+/*
+for (let i=0; i < cards.length; i++){
+    cards[i]= shuffleCards[i]
+}
 
-/*for (let i=0; i < cardArray.length; i++){
+for (let i=0; i < cardArray.length; i++){
     let 
     imgLinks.push(newPosition) 
     
@@ -20,22 +22,6 @@ cards[i]= cardArray[i]
 
 let flips = []
 let counter = 0 
-
-function shuffle(array){
-    let currentIndex = array.length, randomIndex;
-    // while there remain elements to shuffle.
-    while(currentIndex != 0){
-        // pick a remaining element
-        randomIndex = Math.floor((Math.random()) * currentIndex);
-        // 9 elements in array, reduces it by 1
-        currentIndex--;
-        // And swap it with  the current element
-        [array[currentIndex], array[randomIndex]] =
-        [array[randomIndex], array[currentIndex]]
-    }
-    return(array)
-}
-
 let resetButton = document.querySelector('.reset')
 
 resetButton.addEventListener('click', resetGame)
@@ -47,6 +33,7 @@ function resetGame(){
     cards.forEach(card => {
     card.children[0].classList.remove('hide')
     card.children[1].classList.add('hide')
+    card.classList.remove('match')
     })  
     document.querySelector('span').innerText = `FLIPS: ${counter}` 
 
