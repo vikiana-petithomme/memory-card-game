@@ -1,0 +1,26 @@
+
+@media screen and (max-width: 1024px){
+    section.card {
+        width:15.5%;
+    }
+    h1 {
+        font-size: 4rem;
+        color: Purple;
+    }
+    
+    
+}
+
+@media screen and (max-width: 420px){
+    section.card {
+        width:23%;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        color: Purple;
+        line-height:30px;
+    }
+    
+    
+}
