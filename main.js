@@ -1,12 +1,20 @@
 
 
 let cards = document.querySelectorAll('.card')
+
 let cardContainer = document.querySelectorAll('.cardLayout')
 
-console.log(cardContainer[0].children.length)
-for (i = cardContainer[0].children.length; i >= 0; i--) {
-    cardContainer[0].appendChild(cardContainer[0].children[Math.random() * i | 0]);
+let matched = document.getElementsByClassName('match')
+
+console.log(cardContainer)
+
+function shuffle(){
+    for (i = cardContainer[0].children.length; i >= 0; i--) {
+        cardContainer[0].appendChild(cardContainer[0].children[Math.random() * i | 0]);
+    }
 }
+
+shuffle()
 
 /*
 for (let i=0; i < cards.length; i++){
@@ -37,7 +45,7 @@ function resetGame(){
     })  
     document.querySelector('span').innerText = `FLIPS: ${counter}` 
 
-    
+    shuffle()
 }
 
 cards.forEach(card => {
@@ -78,12 +86,17 @@ cards.forEach(card => {
                 console.log(flips[1])
                 
                 if(flips[0].className === flips[1].className){
-                    document.querySelector('h3').innerText = 'MATCH!'
+                    
 
                     console.log(flips[0])
+                    console.log(matched)
                     flips[0].classList.add('match')
                     front.parentNode.classList.add('match')
-                    
+                    if(matched.length === 24){
+                        document.querySelector('h3').innerText = 'YOU WON!'
+                    } else {
+                        document.querySelector('h3').innerText = 'MATCH!'
+                    }
     
                 } else if (flips[0].className !== flips[1].className){
                     document.querySelector('h3').innerText = 'TRY AGAIN!'
